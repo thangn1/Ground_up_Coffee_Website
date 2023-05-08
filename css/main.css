@@ -1,7 +1,11 @@
-
+/*Using a Figma file as a layout guide for the design*/
 /*Define variables for colors*/
 :root {
-    --brown: #4A2409;
+    --dark_brown: #4A2409;
+    --mid_brown: #6b350E;
+    /*set the root of the html for all elements in the document 
+    equal to 1 times the browser preference root font-size*/
+    font-size: 1rem; 
 }
 
 * {
@@ -12,104 +16,206 @@ body {
     padding: 0;
     margin: 0;
 }
-
-
-
-
-#logo {
-    /*width and height dimension are the same on desktop and mobile*/
-    width: 224px;
-    height: 47px;
-    /* margin: 25px auto 0 50px; */
-    /* margin-right: auto;
-    margin-top: 15px;
-    margin-left: 40px; */
-
-    /* align-items: center; */
-}  
-#navbar {
+img {
+    max-width: 100%;
+}
+ 
+.navbar {
+    /*Use position:absolute to break the navbar out of its natural flow 
+    and place it at the top of the page*/
     position: absolute;
     top: 18px;
     margin: 0 auto;
     text-align: center;
     width: 100%;
 }
-#navbar ul {
+.navbar ul {
     display: flex;
     justify-content: center;
     padding: 0;
-    margin: 26px 0 0 0; /*margin-top between nav menu and logo on mobile*/
+    /*margin-top between nav menu and logo on mobile*/
+    margin: 26px 0 0 0; 
     list-style-type: none;
 }
-#navbar li {
-    padding: 0;
+.navbar li {
+    /*total 15px padding between each menu link*/
+    padding: 0 10px; 
     margin: 0;
 }
-#navbar li a {
+.navbar li a {
     text-transform: uppercase;
     color: #fff;
-    padding: 0 15px;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 1.375rem; /*22px divided by 16px = 1.375rem*/
     font-weight: 400;
+    padding: 5px; /*increase clickable area*/
 }
-#navbar li a:hover {
+.navbar li a:hover {
     text-decoration: underline;
 }
 
-.round-corners {
-    border-radius: 20px;
-}
+
 
 .hero {
-    /* background-color: var(--brown); */
-    background-image: linear-gradient(var(--brown), rgba(0,0,0,0))
+    /* background-color: var(--dark_brown); */
+    background-image: linear-gradient(var(--dark_brown), rgba(0,0,0,0))
     ,url("../img/header-photo.jpg");
     background-size: cover;
     height: 650px;
     max-width: 1300px;
     
-    /* Center-center the h1 in the hero */
+    /* Center-center the big, heavy text in the hero-image*/
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
-.hero h1 {
+.hero p {
     margin: 0;
     padding: 0;
     font-weight: 900;
     color: #fff;
-    font-size: 40px;
-    line-height: 45px;
+    font-size: 2.5rem; /*40px / 16px = 2.5rem*/
+    line-height: 1.125; /*45px / 40px = line-heightpx / font-sizepx = 1.125*/
     text-align: center;
-    text-shadow: 0 5px 12px var(--brown);
+    text-shadow: 0 5px 12px var(--dark_brown);
+}
+
+/* intro is a centered box of important text*/
+.intro {
+    color: var(--mid_brown);
+    text-align: center;
+    margin: 60px auto;
+}
+.intro p {
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    font-size: 1.25rem; /*20px/16px = 1.25rem*/
+}
+.intro h1 {
+    font-size: 2.5rem; /*40px/16px=2.5rem*/
+    line-height: 1.125; /*45px/40px=1.125 times the font-size*/
+    font-weight: 900;
+    margin: 0 0 16px 0;
+    padding: 0;
+}
+.intro h2 {
+    margin: 26px 0 0 0;
+    font-weight: 600;
+    font-size: 1.94rem; /*31px/16px = 1.94rem*/
+}
+/* svg images have width and height attributes in it 
+.intro img {
+    width: 84px;
+    height: 84px;
+} */
+
+/*featured has 3 sections of img-text*/
+.featured {
+    margin: 60px auto;
+    padding: 0 23px;
+    /* background-color: #eee;  */
+}
+.featured section {
+    margin: 0 auto 60px auto;
+    /* background-color: #bbb; */
+}
+/*Set all images in featured sections to 390 x 390 (desktop) or 328 x 328 (mobile).
+    We exported and saved the images at 2x resolution,
+    so that it would have double the amount of pixels.
+    By setting the size using css, we double the resolution with the same image size*/
+.featured section img {
+    border-radius: 20px;
+    width: 328px;
+    height: 328px;
+    margin: 0 0 20px 0;
+}
+.featured-info {
+    color: var(--mid_brown);
+    max-width: 38.25rem; /*612px/16px=38.25rem*/
+}
+.featured-info h3 {
+    font-weight: 700;
+    font-size: 1.81rem; /*29px/16px=1.81rem*/
+    line-height: 1.17; /*34px/29px=1.17*/
+    margin: 0 0 10px 0;
+}
+.featured-info p {
+    font-size: 1.13rem; /*18px/16px=1.13*/
+    line-height: 1.44; /*26px/18px=1.44*/
+    margin: 0;
+    
+}
+.featured img:last-child {
+    text-align: center;
+    margin: 0 auto;
+}
+
+/*used to center images across the width*/
+.center-wrapper {
+    text-align: center;
+    width: 100%;
+}
+
+.menu-imglink-wrapper {
+    text-align: center; 
+}
+.menu-imglink {
+    position: relative;
+    /* background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0), var(--dark_brown)); */
+    /* background-color: #888; */
+    /* text-align: center; */
+    max-width: 328px;
+    display: block;
+    margin: 0 auto;
+}
+.menu-imglink img {
+    border-radius: 20px;
+    
+    width: 100%;
+    
+}
+.menu-imglink p {
+    position: absolute;
+    bottom: 15px;
+
+    background-color: #555;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 2.25rem; /*36px/16px=2.25rem*/ 
+    font-weight: 900;
+    
 }
 
 
-@media (min-width: 1000px) {
+@media (min-width: 970px) {
     
     body {
         background-color: #35667C;
     }
     
-
+    /*wraps all content in a white-filled rounded box*/
     #wrapper {
         background-color: #fff; 
-        /* max-width: 1320px; */
         border-radius: 20px;
         margin: 20px 60px;
-        max-width: 1320px; /*Max-width = 1300px(width of hero img) + 10px border on both sides*/
+        /*Max-width = 1300px(width of hero img) + 10px white border on both sides from hero-wrapper*/
+        max-width: 1320px; 
         position: relative; 
         /*absolute child navbar in relative parent needed to break navbar out of flow and place it at top of hero*/
     }
 
-    #hero-wrapper {
+    /*wraps hero image (including navbar) in a white bordered box
+    This is so we can have a white border, around the hero, but not around the entire page.*/
+    .hero-wrapper {
         border-radius: 20px;
         border: 10px #fff solid;
-        /*The width and height = 20+with and height of hero image
-        because 10px white border around and box-sizing: border-box,
-        so border and padding is included in width and height values.*/
+        /*The width and height = 20+width and 20+height of hero image
+        because of the 10px white border around and box-sizing: border-box,
+        so border is included in width and height values.*/
         max-width: 1320px; 
         height: 670px;
         margin: 10px auto;
@@ -117,31 +223,99 @@ body {
     }
 
     .hero {
+        /*Inside rounded corners for hero image*/
         border-radius: 11px;
     }
-
-    .hero h1 {
+    /*Hero big, bold text*/
+    .hero p {
         font-size: 47px;
-        margin: 0 102px;
     }
 
-    #navbar {
+    .navbar {
         display: flex;
-
+        /*Use flex to put logo and navmenu side-by-side*/
+        /*Use position absolute child in relative parent to fix the navbar to the top of the page, layered on top of hero*/
         position: absolute;
         top: 25px;
         left: 50px;
-
+        /*Set the width of the navbar to the full width of the parent wrapper minus the 50px position:left.
+        This is used, so later we can push the navmenu to the light with .logo{margin-right:auto}. Now it has space to go*/
         width: calc(100% - 50px);
 
     }
-    #navbar ul {
+    .navbar ul {
         align-self: flex-end;
-        margin: 0 35px 0 0; /*margin-right of menu = 50px - 15px padding*/
+        /*margin-right of menu = 50px - 15px padding of each li*/
+        margin: 0 35px 0 0; 
     }
 
-    #logo {
+    .logo {
+        /*Push the navmenu all the way to the right of the navbar*/
         margin-right: auto;
+    }
+
+    /*intro is a box of important information under the hero*/
+    .intro {
+        margin: 80px auto;
+    }
+    .intro p {
+        font-size: 1.56rem; /*25px/16px=1.56rem*/
+    }
+    .intro h1 {
+        margin: 0 0 5px 0;
+        font-size: 2.5rem; /*40px/16px=2.5rem*/
+    }
+    .intro h2 {
+        font-size: 2.38; /*38px/16px=2.38rem*/
+    }
+    
+    
+    /*featured has 3 sections of img-text*/
+    .featured {
+        margin: 80px auto;
+    }
+    .featured section {
+        display: flex;
+        align-items: center;
+        margin: 0 auto 80px auto;
+        max-width: 1052px;
+    }
+    .featured section img {
+        /*2x resolution*/
+        width: 390px;
+        margin: 0 50px 0 0;  
+    }
+    /*Alternate text and image in every other section in featured div*/
+    .featured section:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+    /*Alternate the margin between text and image in every other section in featured div*/
+    .featured section:nth-child(even) img{
+        margin: 0 0 0 50px;
+    }
+    .featured-info h3 {
+        font-size: 2.25rem; /*36px/16px=2.25rem*/
+        line-height: 1.11; /*40px/36px=1.11*/
+    }
+    .featured-info p {
+        font-size: 1.38rem; /*22px/16px=1.38rem*/
+        line-height: 1.36; /*30px/22px=1.36*/
+    }
+    
+    /*Drink menu and Food Menu img links side-by-side on desktop*/
+    .menu-imglink-wrapper {
+        display: flex;
+        margin: 0 109px; /*134 - 25 on either side*/
+        
+    }
+    .menu-imglink img{
+        
+        width: 100%;
+        
+    } 
+    .menu-imglink {
+        margin: 0 25px; /*50px between images*/
+        max-width: 500px;
     }
 
 }
