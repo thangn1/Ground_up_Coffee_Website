@@ -1,4 +1,5 @@
 /*Using a Figma file as a layout guide for the design*/
+
 /*Define variables for colors*/
 :root {
     --dark_brown: #4A2409;
@@ -117,6 +118,7 @@ img {
     margin: 60px auto;
     padding: 0 23px;
     /* background-color: #eee;  */
+    text-align: center;
 }
 .featured section {
     margin: 0 auto 60px auto;
@@ -130,10 +132,14 @@ img {
     border-radius: 20px;
     width: 328px;
     margin: 0 0 20px 0;
+    
+    
 }
 .featured-info {
     color: var(--mid_brown);
     max-width: 38.25rem; /*612px/16px=38.25rem*/
+    text-align: left;
+    margin: 0 auto;
 }
 .featured-info h3 {
     font-weight: 700;
@@ -222,7 +228,7 @@ footer > p:last-child {
     display: inline-block;
 }
 
-@media (min-width: 970px) {
+@media (min-width: 900px) {
     
     body {
         background-color: #35667C;

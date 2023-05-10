@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- meta name="description" displays a message under Google search link.-->
-    <meta name="description" content="Drink high-quality coffee and hang out in a comfortable space.">
+    <meta name="description" content="Drink high-quality coffee and relax in a comfortable space at Ground Up Coffee.">
     <title>Ground Up Coffee</title>
 
     <link href="css/main.css" rel="stylesheet">
@@ -50,7 +50,7 @@
             <!-- featured is set of 3 sections of info and images -->
             <div class="featured">
 
-                <section>
+                <section id="s1">
                     <img src="img/barista-photo.jpg" alt="barista serving a latte">
                     <div class="featured-info">
                         <h3>Friendly & knowledgeable baristas</h3>
@@ -58,7 +58,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section id="s2">
                     <img src="img/atmosphere-photo.jpg" alt="outdoor seating area">
                     <div class="featured-info">
                         <h3>Comfortable, laid-back atmosphere</h3>
@@ -66,7 +66,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section id="s3">
                     <img src="img/roasted-beans-photo.jpg" alt="roasted whole coffee beans">
                     <div class="featured-info">
                         <h3>Freshly roasted coffee beans</h3>
@@ -119,7 +119,10 @@
 
 
 
-
+    <!-- import gsap (greensock animation platform) javascript into the file
+	a library to allow animation to work-->
+	<script src="js/gsap.min.js"></script>
+	<script src="js/ScrollTrigger.min.js"></script>
     <script src="js/scroll-animation.js"></script>
 </body>
 </html>
