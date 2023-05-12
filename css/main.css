@@ -9,18 +9,23 @@
     font-size: 1rem; 
 }
 
+/*Standardization*/
+/*Use border-box so width includes padding and border. Add this code to every single project*/
 * {
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
 }
 body {
-    padding: 0;
     margin: 0;
+    overflow-x: hidden; /*hide extra wideness from gsap initial position for featured-sections animations*/
 }
+/*Images cannot be bigger than their container.
+Note: all images are saved at 2x resolution. we use css to constrain the max-width so they appear sharper*/
 img {
     max-width: 100%;
 }
  
+/*Navigation bar*/
 .navbar {
     /*Use position:absolute to break the navbar out of its natural flow 
     and place it at the top of the page*/
@@ -51,10 +56,10 @@ img {
     font-weight: 400;
     padding: 5px; /*increase clickable area*/
 }
-.navbar li a:hover {
+.navbar li a:hover, 
+.navbar li a:focus{
     text-decoration: underline;
 }
-
 
 
 .hero {
@@ -73,7 +78,7 @@ img {
 }
 .hero p {
     margin: 0;
-    padding: 0;
+    padding: 0 13px; /*extra left-right padding to prevent clipping view window*/
     font-weight: 900;
     color: #fff;
     font-size: 2.5rem; /*40px / 16px = 2.5rem*/
@@ -87,8 +92,10 @@ img {
     color: var(--mid_brown);
     text-align: center;
     margin: 60px auto;
+    padding: 0 10px; /*extra left-right padding to prevent clipping view window*/
 }
-.intro p {
+.intro p:first-child {
+    /*<p>Your Friendly neighborhood</p>*/
     text-transform: uppercase;
     font-weight: 600;
     padding: 0;
@@ -100,14 +107,14 @@ img {
     line-height: 1.125; /*45px/40px=1.125 times the font-size*/
     font-weight: 900;
     margin: 0 0 16px 0;
-    padding: 0;
 }
-.intro h2 {
+.intro p:last-child {
+    /*<p>Open Daily 7am – 8pm</p>*/
     margin: 26px 0 0 0;
     font-weight: 600;
     font-size: 1.94rem; /*31px/16px = 1.94rem*/
 }
-/* svg images have width and height attributes in it 
+/* svg images have width and height attributes in them already
 .intro img {
     width: 84px;
     height: 84px;
@@ -115,33 +122,36 @@ img {
 
 /*featured has 3 sections of img-text*/
 .featured {
-    margin: 60px auto;
+    margin: 60px auto; /*center the featured box in the <main>*/
     padding: 0 23px;
     /* background-color: #eee;  */
-    text-align: center;
+    
 }
 .featured section {
     margin: 0 auto 60px auto;
     /* background-color: #bbb; */
+    /*align the images within the featured section to the center of its box  (relevant to mobile)*/
+    text-align: center; 
+    /*set the width of the section (namely the featured-info text) to be the same size as the max image size, this way text does not get wider than image, until desktop*/
+    max-width: 390px;
+    
 }
 /*Set all images in featured sections to 390 x 390 (desktop) or 328 x 328 (mobile).
-    We exported and saved the images at 2x resolution,
-    so that it would have double the amount of pixels.
-    By setting the size using css, we double the resolution with the same image size*/
+We exported and saved the images at 2x resolution,
+so that it would have double the amount of pixels.
+By setting the size using css, we double the resolution with the same image size*/
 .featured section img {
     border-radius: 20px;
     width: 328px;
     margin: 0 0 20px 0;
-    
-    
 }
 .featured-info {
     color: var(--mid_brown);
     max-width: 38.25rem; /*612px/16px=38.25rem*/
-    text-align: left;
-    margin: 0 auto;
+    text-align: left; /*left-align the text in each featured-section*/
+    margin: 0 auto; /*center the text-box to the section*/
 }
-.featured-info h3 {
+.featured-info h2 {
     font-weight: 700;
     font-size: 1.81rem; /*29px/16px=1.81rem*/
     line-height: 1.17; /*34px/29px=1.17*/
@@ -151,7 +161,6 @@ img {
     font-size: 1.13rem; /*18px/16px=1.13*/
     line-height: 1.44; /*26px/18px=1.44*/
     margin: 0;
-    
 }
 
 
@@ -164,37 +173,65 @@ img {
 .imglink-wrapper {
     /* background-color: antiquewhite; */
     margin: 0 auto;
+    padding: 23px;
 }
 .imglink {
+    display: block; /*display: block so width,height and margin,padding attributes work because it now has a good box-model*/
+
     position: relative;
-    /* background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0), var(--dark_brown)); */
-    max-width: 328px;
+    max-width: 390px; /*mobile img is scaled down, with same aspect ratio, able to flex*/
     width: 100%;
-    display: block; /*display block so width and margin attributes work*/
+    
     margin: 0 auto 34px auto;
     /*34px vertically between images. 34px at the bottom of last imglink gets overlapped with 60px margin-top of footer*/
-    line-height: 0; /*remove extra space from bottom*/
+    /* background-color: blue; */
+    line-height: 0; /*remove extra space from <a> imgs*/
 }
 .imglink img {
     border-radius: 20px;
     width: 100%;
 }
 .imglink p {
+    /*position: absolute allows us to place this text on top of the image (out of the flow)*/
     position: absolute;
-    bottom: 11px; /*text is placed 11-15px above the bottom of imglink*/
+    bottom: 0; 
 
-    width: 100%;
-    text-align: center;
+    /*could also do left: 0; right: 0; to center the text over its relative parent*/
+    width: 100%; /*textbox is the full width of its parent container imglink. allows us to center the text with regards to imglink*/
+    height: 100%; /*height 100% allows the baground-gradient to stretch the full imglink height*/
+    /*position the text within the textbox using flex*/
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
     color: #fff;
     font-size: 2.25rem; /*36px/16px=2.25rem*/ 
     font-weight: 900;
+    margin: 0; /*remove default <p> margins*/
+    line-height: 1; /*line-height gets inherited from parent. text is centered in line-height. Set line-height = 1 * current-font-size, so text is visible and not spilling out.*/
+    /*text is placed 11-15px above the bottom of imglink (padding-bottom)*/
+    padding: 0 0 11px 0;
+    /* background-color: rgba(0,255,0,0.4); */
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0), var(--dark_brown));
+    border-radius: 20px;
+}
+
+/*Add transparent white overlay when imglink is hovered. This is possible bc the width and height of <p> is 100% of imglink, so we can change the background*/
+.imglink p:hover,  
+.imglink p:focus{
+    background-color: rgba(255,255,255,0.3);
+    
+}
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff90;
 }
 
 
 footer {
     margin-top: 60px;
     border-top: rgba(107, 53, 14, 0.4) solid 2px;
-    
     
     color: var(--mid_brown);
     text-align: center;
@@ -214,12 +251,28 @@ footer {
     /*ADDRESS*/
     font-weight: 800;
 }
+
+.social-icons {
+    margin: 0 auto;
+}
+.social-icons ul {
+    display: flex;
+    justify-content: center;
+    padding: 0; /*remove default padding*/
+    margin: 0;
+    /* background-color: aqua; */
+    
+}
+.social-icons li{
+    list-style-type: none;
+    line-height: 0;
+}
 .social-icons a {
     margin: 0 7px;
-    padding: 0.5px;
+    padding: 0.5px;   
     text-decoration: none;
-    display: inline-block;
 }
+
 footer > p:last-child {
     /*COPYRIGHT*/
     font-size: 0.88rem; /*14px/16px=0.88rem*/
@@ -227,18 +280,24 @@ footer > p:last-child {
     /* background-color: antiquewhite; */
     display: inline-block;
 }
-
+@media (min-width: 400px) {
+    /* When screen size is bigger than phone size, increase featured section image size to match that of desktop image size*/
+    .featured section img {
+        width: 390px;
+    }
+}
 @media (min-width: 900px) {
     
     body {
         background-color: #35667C;
+        margin: 20px;
     }
     
     /*wraps all content in a white-filled rounded box*/
     #wrapper {
         background-color: #fff; 
         border-radius: 20px;
-        margin: 20px auto;
+        margin: 0 auto;
         /*Max-width = 1300px(width of hero img) + 10px white border on both sides from hero-wrapper*/
         max-width: 1320px; 
         position: relative; 
@@ -339,24 +398,27 @@ footer > p:last-child {
         line-height: 1.36; /*30px/22px=1.36*/
     }
     
+    
     /*Drink menu and Food Menu img links side-by-side on desktop*/
     .imglink-wrapper {
         display: flex;
-        margin: 0 108px; /*133px margin - 25px padding*/
+        margin: 0 auto; /*133px margin - 25px padding. Don't fix the margins, otherwise, this won't be flexible. Center using auto margins*/
+        max-width: 1053px; /*max-width is set to be same max-width as featured section, to have space on the sides without getting too big*/
+        gap: 50px;
+        padding: 23px; /*padding is set to match featured section*/
     }
-    .imglink img{
-        width: 100%;
-    } 
+    
     .imglink {
         /*50px between images*/
-        margin: 0 25px; 
+        /* margin: 0 25px; set with flex-gap */
         max-width: 500px;
     }
     .imglink p {
-        bottom: 15px;
+        /*15px padding-bottom of text on top of img*/
+        padding: 0 0 15px 0;
     }
 
-
+    /*Footer*/
     .contact-info {
         flex-direction: row;
         justify-content: space-around;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- meta name="description" displays a message under Google search link.-->
-    <meta name="description" content="Drink high-quality coffee and relax in a comfortable space at Ground Up Coffee.">
+    <meta name="description" content="Drink high-quality coffee and relax at Ground Up Coffee.">
     <title>Ground Up Coffee</title>
 
     <link href="css/main.css" rel="stylesheet">
@@ -44,32 +44,34 @@
                 <p>Your Friendly neighborhood</p>
                 <h1>Coffee Shop in Williamsburg, Brooklyn</h1>
                 <img src="img/espresso-machine.svg" alt="">
-                <h2>Open Daily 7am – 8pm</h2>
+                <!-- alt text is empty because this img is just a visual seperator and reduces clutter for screen reader, but doesn't read file name. This image is not meaningful, just visual fluff-->
+                <p>Open Daily 7am – 8pm</p>
             </div> <!-- intro -->
 
             <!-- featured is set of 3 sections of info and images -->
             <div class="featured">
 
-                <section id="s1">
+                <section>
                     <img src="img/barista-photo.jpg" alt="barista serving a latte">
                     <div class="featured-info">
-                        <h3>Friendly & knowledgeable baristas</h3>
+                        <h2>Friendly & knowledgeable baristas</h2>
                         <p>Whether you have a favorite drink you want prepared a specific way, or you’re new to coffee and would like recommendations... our baristas are here to help. Feel free to ask questions, or tell them exactly what you want so they can prepare the perfect drink for you.</p>
                     </div>
                 </section>
 
-                <section id="s2">
+                <section>
                     <img src="img/atmosphere-photo.jpg" alt="outdoor seating area">
                     <div class="featured-info">
-                        <h3>Comfortable, laid-back atmosphere</h3>
+                        <h2>Comfortable, laid-back atmosphere</h2>
                         <p>Take your time and enjoy your latte or drink of choice. Having good conversations with friends or a productive business meeting over a great cup of joe. We won’t rush you out.</p>
                     </div>
                 </section>
 
-                <section id="s3">
-                    <img src="img/roasted-beans-photo.jpg" alt="roasted whole coffee beans">
+                <section>
+                    <img src="img/roasted-beans-photo.jpg" alt="">
+                    <!-- empty alt text here because we are immediately talking about what is in the photo (with text right after img), so remove alt text to avoid repetition-->
                     <div class="featured-info">
-                        <h3>Freshly roasted coffee beans</h3>
+                        <h2>Freshly roasted coffee beans</h2>
                         <p>We get fresh coffee bean shipments directly from sustainable growers. Then we roast them in-house for optimum freshness. Don’t settle for stale old coffee.</p>
                     </div>
                 </section>
@@ -80,13 +82,17 @@
                 
             </div> <!-- featured sections -->
 
+            <!-- since the images here are the same for mobile and desktop, the aspect ratio is the same. So its better to use <img> rather than background-image.
+            background-images only display in the space that the content takes up (only the size of the text).
+            Use absolute positioning in relative parent to position text on top of images-->
             <div class="imglink-wrapper">
                 <a class="imglink" href="drink-menu.html"> 
-                    <img src="img/drink-menu-photo.jpg" alt="coffee drink in glass">
+                    <img src="img/drink-menu-photo.jpg" alt="">
+                    <!-- empty alt text here because we just want screen reader to say 'Drink Menu' or 'Food Menu', not any descriptions of these images-->
                     <p>Drink Menu</p>
                 </a>
                 <a class="imglink" href="food-menu.html"> 
-                    <img src="img/food-menu-photo.jpg" alt="fried egg on avacado toast">
+                    <img src="img/food-menu-photo.jpg" alt="">
                     <p>Food Menu</p>
                 </a>
             </div>
@@ -101,17 +107,21 @@
                 <p>hello@groundup.com</p>
             </div>
             <div class="social-icons">
-                <a href="https://www.facebook.com">
-                    <img src="img/icon-facebook.svg" alt="facebook">
-                </a>
-                <a href="https://www.twitter.com">
-                    <img src="img/icon-twitter.svg" alt="twitter">
-                </a>
-                <a href="https://www.instagram.com">
-                    <img src="img/icon-instagram.svg" alt="instagram">
-                </a>
+                <ul>
+                    <li><a href="https://www.facebook.com">
+                        <img src="img/icon-facebook.svg" alt="facebook">
+                    </a></li>
+                    <li><a href="https://www.twitter.com">
+                        <img src="img/icon-twitter.svg" alt="twitter">
+                    </a></li>
+                    <li><a href="https://www.instagram.com">
+                        <img src="img/icon-instagram.svg" alt="instagram">
+                    </a></li>
+                </ul>
             </div>
-            <p>Copyright &copy; Ground Up</p>
+            <!-- © is okay because we have <meta charset="UTF-8"> in <head>
+            For email html, use &copy; instead to encode the special character -->
+            <p>Copyright © Ground Up</p>
         </footer>
 
 

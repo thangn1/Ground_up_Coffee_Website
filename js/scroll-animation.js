@@ -1,9 +1,9 @@
 // Animate sections (images and featured-info text) to slide in from the side from invisible, alternating directions for each section
 
 // 1. get all section images into an array
-let sectionImgs = document.querySelectorAll('section img');
+let sectionImgs = document.querySelectorAll('.featured section img');
 // 2. get all featured-info text sections into an array
-let sectionDivs = document.querySelectorAll('section div.featured-info');
+let sectionDivs = document.querySelectorAll('.featured section div.featured-info');
 
 let heroText = document.querySelector('.hero p');
 // console.log(sectionImgs);
@@ -16,7 +16,7 @@ gsap.from(heroText, {
     y: -30, // slide in from top
     opacity: 0, // fade in from invisible
     duration: 1,
-    delay: 0.3
+    delay: 0.2
 });
 
 // 3. on desktop media query, each section will animate from invisible and from a side, alternating left-right for each section.
@@ -26,23 +26,24 @@ gsap.from(heroText, {
 // i.e. 1st section slides in from left, 2nd section slides in from right, 3rd section slides in from left, ...
 if ((window.matchMedia("(min-width: 900px)")).matches) {
 
-    let movement = -100;
+    let movement = -50;
     for (let i=0; i<sectionImgs.length; i++) {
         
         gsap.from(sectionImgs[i], {	
-            scrollTrigger: sectionImgs[i], // animation triggers when user scrolls to this section
+            scrollTrigger: {trigger: sectionImgs[i], start: "top 90%"}, // animation triggers when user scrolls to this section
             x: movement, // slide in from left
             opacity: 0, // fade in from invisible
             duration: 1,
-            delay: 0.3
+            delay: 0.1
+            
         });
 
         gsap.from(sectionDivs[i], {	
-            scrollTrigger: sectionImgs[i], // animation triggers when user scrolls to this section
+            scrollTrigger: {trigger: sectionImgs[i], start: "top 90%"}, // animation triggers when user scrolls to this section
             x: -1*movement, // slide in from right / opposite direction that image moved
             opacity: 0, // fade in from invisible
             duration: 1,
-            delay: 0.3
+            delay: 0.1
         });
 
         movement *=-1; // alternate the direction left-right for each section
@@ -54,7 +55,7 @@ else {
     for (let i=0; i<sectionImgs.length; i++) {
         
         gsap.from(sectionImgs[i], {	
-            scrollTrigger: sectionImgs[i], // animation triggers when user scrolls to this section
+            scrollTrigger: {trigger: sectionImgs[i], start: "top 90%"}, // animation triggers when user scrolls to this section
             x: movement, // slide in from left
             opacity: 0, // fade in from invisible
             duration: 1,
@@ -62,7 +63,7 @@ else {
         });
 
         gsap.from(sectionDivs[i], {	
-            scrollTrigger: sectionImgs[i], // animation triggers when user scrolls to this section
+            scrollTrigger: {trigger: sectionImgs[i], start: "top 90%"}, // animation triggers when user scrolls to this section
             x: movement, // slide in from left / same direction that image moved
             opacity: 0, // fade in from invisible
             duration: 1,
